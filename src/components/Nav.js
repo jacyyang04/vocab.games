@@ -4,8 +4,6 @@
 
 import { Link } from 'react-router-dom';
 
-{/* <Link to="/github/users/bhague1281">Brian's Github</Link> */}
-
 function Nav() {
   return (
     <nav>

@@ -24,10 +24,10 @@ nav > h1 {
   font-size: 1.3rem;
 }
 
-.Vocabulary, .Build, .Games, .HinkyPinky, .HangMan, .Fill {
+.Vocabulary, .Build, .Games, .HinkyPinky, .HangMan, .Fill, .Loading {
   grid-column-start: 4;
   grid-column-end: 12;
-  border: blue solid 2px
+  border: blue solid 2px;
 }
 
 /* Vocabulary ////////////////////////////////////////////////////////////////*/

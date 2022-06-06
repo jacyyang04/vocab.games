@@ -4,9 +4,11 @@
 
 // Import... ///////////////////////////////////////////////////////////////////
 // Libraries:
+import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // Components:
 import Nav from './components/Nav';
+import Loading from './components/Loading';
 import Vocabulary from './components/vocab/Vocabulary';
 import Build from './components/vocab/Build';
 import Games from './components/games/Games';
@@ -18,6 +20,20 @@ import './App.css';
 ////////////////////////////////////////////////////////////////////////////////
 
 function App() {
+
+  const [loading, setLoading] = useState(false);
+
+  if (loading) {
+    return (
+      <div className="App">
+        <Router>
+          <Nav />
+          <Loading />
+        </Router>
+      </div>
+    )
+  }
+
   return (
     <div className="App">
       <Router>
