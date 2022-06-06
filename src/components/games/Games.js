@@ -4,7 +4,7 @@
 
 function Games() {
   return (
-    <div>
+    <div className="Games">
       <h2>
         Games
       </h2>

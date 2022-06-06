@@ -7,7 +7,7 @@ import {Route, Routes}
 
 function Vocabulary() {
   return (
-    <div>
+    <div className="Vocabulary">
       <h2>
         Vocabulary
       </h2>

@@ -7,7 +7,7 @@ import {Route, Routes}
 
 function HinkyPinky() {
   return (
-    <div>
+    <div className="HinkyPinky">
       <h2>
         Hinky Pinky
       </h2>

@@ -42,6 +42,7 @@ Play **Hang Man** to develop your deductive reasoning and learn new words to add
 ### MVP (Wk. 1-2)
 
 - [x] Basic navigation & nav.
+- [x] Basic columnar layout.
 - [ ] *Build* displays words with definitions & IPA notation.
 - [ ] *Build* displays words with pronunciation audio.
 - [ ] *Build* displays prompts when inputting word data.

@@ -7,7 +7,7 @@ import {Route, Routes}
 
 function Build() {
   return (
-    <div>
+    <div className="Build">
       <h2>
         Build
       </h2>

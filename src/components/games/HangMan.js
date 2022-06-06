@@ -7,7 +7,7 @@ import {Route, Routes}
 
 function HangMan() {
   return (
-    <div>
+    <div className="HangMan">
       <h2>
         Hang Man
       </h2>
