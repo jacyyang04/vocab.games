@@ -1,23 +1,54 @@
-import logo from './logo.svg';
+////////////////////////////////////////////////////////////////////////////////
+// App /////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+// Import... ///////////////////////////////////////////////////////////////////
+// Libraries:
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// Components:
+import Nav from './components/Nav';
+import Vocabulary from './components/vocab/Vocabulary';
+import Build from './components/vocab/Build';
+import Games from './components/games/Games';
+import HinkyPinky from './components/games/HinkyPinky';
+import HangMan from './components/games/HangMan';
+import Fill from './components/games/Fill';
+// Style:
 import './App.css';
+////////////////////////////////////////////////////////////////////////////////
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Nav />
+        <Routes>
+          <Route 
+            path="/" 
+            element={<Vocabulary />}
+          />
+          <Route 
+            path="/build"
+            element={<Build />} 
+          />
+          <Route 
+            path="/games"
+            element={<Games />} 
+          />
+          <Route 
+            path="/games/hinky-pinky"
+            element={<HinkyPinky />} 
+          />
+          <Route 
+            path="/games/hang-man"
+            element={<HangMan />} 
+          />
+          <Route 
+            path="/games/fill"
+            element={<Fill />} 
+          />
+        </Routes>
+      </Router>
     </div>
   );
 }
