@@ -34,6 +34,7 @@ Play **Hang Man** to develop your deductive reasoning and learn new words to add
 ## Dependencies
 
 * ReactJS
+* [HotKeys.js](https://github.com/jaywcjlove/hotkeys)
 * linguarobot.io
 * dictionaryapi.com
 
@@ -61,8 +62,8 @@ Play **Hang Man** to develop your deductive reasoning and learn new words to add
 - [ ] *Build* bolds lexemes.
 - [ ] *Build* CSS.
 - [ ] *Vocabulary* CSS.
-- [ ] *Build* accessed when `B` is pressed.
-- [ ] *Vocabulary* accessed when `V` is pressed.
+- [x] *Build* accessed when `B` is pressed.
+- [x] *Vocabulary* accessed when `V` is pressed.
 
 ### Download (Wk. 3)
 
@@ -71,7 +72,7 @@ Play **Hang Man** to develop your deductive reasoning and learn new words to add
 
 ### Game: Hinky Pinky (Wk. 3)
 
-- [ ] *Hinky Pinky* accessed when `H` is pressed.
+- [x] *Hinky Pinky* accessed when `H` is pressed.
 - [ ] *Hinky Pinky* displays valid challenge phrases.
 - [ ] *Hinky Pinky* checks response when `RETURN` is pressed.
 - [ ] *Hinky Pinky* accepts valid responses.
@@ -80,12 +81,12 @@ Play **Hang Man** to develop your deductive reasoning and learn new words to add
 
 ### Game: Fill (Bonus)
 
-- [ ] *Fill* accessed when `F` is pressed.
+- [x] *Fill* accessed when `F` is pressed.
 - [ ] ...
 
 ### Game: Hang Man (Bonus)
 
-- [ ] *Hang Man* accessed when `G` is pressed.
+- [x] *Hang Man* accessed when `G` is pressed.
 - [ ] ...
 
 ### Upload (Bonus)

@@ -5,7 +5,8 @@
 // Import... ///////////////////////////////////////////////////////////////////
 // Libraries:
 import React, {useState, useEffect} from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
+import hotkeys from 'hotkeys-js';
 // Components:
 import Nav from './components/Nav';
 import Loading from './components/Loading';
@@ -22,6 +23,36 @@ import './App.css';
 function App() {
 
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  // setAppHotkeys /////////////////////////////////////////////////////////////
+  // Sets vocab.game's global hotkeys.
+  const setAppHotkeys = () => {
+    hotkeys('v', function(event, handler) {
+      event.preventDefault(); 
+      navigate('/');
+    });
+    hotkeys('b', function(event, handler) {
+      event.preventDefault(); 
+      navigate('/build');
+    });
+    hotkeys('h', function(event, handler) {
+      event.preventDefault(); 
+      navigate('/games/hinky-pinky');
+    });
+    hotkeys('g', function(event, handler) {
+      event.preventDefault(); 
+      navigate('/games/hang-man');
+    });
+    hotkeys('f', function(event, handler) {
+      event.preventDefault(); 
+      navigate('/games/fill');
+    });
+  }
+
+  useEffect(() => {
+    setAppHotkeys();
+  }, []);
 
   if (loading) {
     return (
@@ -36,7 +67,6 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
         <Nav />
         <Routes>
           <Route 
@@ -64,7 +94,6 @@ function App() {
             element={<Fill />} 
           />
         </Routes>
-      </Router>
     </div>
   );
 }
