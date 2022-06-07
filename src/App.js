@@ -7,7 +7,7 @@
 import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import hotkeys from 'hotkeys-js';
-import { fetchWord } from './fetchVocabulary';
+import { getMWWordData } from './mwLibrary';
 // Components:
 import Nav from './components/Nav';
 import Loading from './components/Loading';
