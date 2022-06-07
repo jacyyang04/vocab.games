@@ -35,8 +35,8 @@ Play **Hang Man** to develop your deductive reasoning and learn new words to add
 
 * ReactJS
 * [HotKeys.js](https://github.com/jaywcjlove/hotkeys)
-* linguarobot.io
-* dictionaryapi.com
+* [Merriam-Webster's Collegiate® Dictionary with Audio](https://dictionaryapi.com/products/api-collegiate-dictionary)
+* [Merriam-Webster's Collegiate® Thesaurus](https://dictionaryapi.com/products/api-collegiate-thesaurus)
 
 ## Tasks
 
@@ -45,6 +45,8 @@ Play **Hang Man** to develop your deductive reasoning and learn new words to add
 - [x] Basic navigation & nav.
 - [x] Basic columnar layout.
 - [x] Basic loading screen.
+- [ ] *Build* focuses searchbar when `/` is pressed.
+- [ ] *Build* deletes a focused data field when `CTRL+D` is pressed.
 - [ ] *Build* displays words with definitions & IPA notation.
 - [ ] *Build* displays words with pronunciation audio.
 - [ ] *Build* displays prompts when inputting word data.

@@ -7,6 +7,7 @@
 import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import hotkeys from 'hotkeys-js';
+import { fetchWord } from './fetchVocabulary';
 // Components:
 import Nav from './components/Nav';
 import Loading from './components/Loading';
@@ -18,7 +19,6 @@ import HangMan from './components/games/HangMan';
 import Fill from './components/games/Fill';
 // Style:
 import './App.css';
-////////////////////////////////////////////////////////////////////////////////
 
 function App() {
 
@@ -35,6 +35,10 @@ function App() {
     hotkeys('b', function(event, handler) {
       event.preventDefault(); 
       navigate('/build');
+    });
+    hotkeys('shift+g', function(event, handler) {
+      event.preventDefault();
+      navigate('/games');
     });
     hotkeys('h', function(event, handler) {
       event.preventDefault(); 

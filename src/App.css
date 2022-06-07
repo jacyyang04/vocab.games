@@ -12,6 +12,14 @@ body {
   column-gap: 2rem;
 }
 
+.hidden {
+  display: none;
+}
+
+.error {
+  border: red solid 2px;
+}
+
 /* Nav ///////////////////////////////////////////////////////////////////////*/
 
 nav {
