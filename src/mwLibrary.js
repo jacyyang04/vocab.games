@@ -4,7 +4,8 @@
 // Library for receiving and formatting/standardizing [WordData] from 
 // Merriam-Webster/dictionaryapi.com.
 
-function WordData(words, isSuggestions) {
+function WordData(headword, words, isSuggestions) {
+  this.headword = headword;
   this.words = words;
   this.isSuggestions = isSuggestions;
 }
@@ -36,7 +37,7 @@ const getMWWordData = async (wordQuery) => {
   if (mwWordArrayIsSuggestions(mwWordArray)) {
     return new WordSuggestions(mwWordArray, true);
   } else {
-    return new WordData(formatMWWordArray(mwWordArray), false);
+    return new WordData(wordQuery, formatMWWordArray(mwWordArray), false);
   }
 }
 
