@@ -35,10 +35,14 @@
 body {
   font-size: 18px;
   font-family: "Liberation Serif", serif;
+  color: #2f2722;
+  background: #ffffff;
 }
 
 h2 {
   font-size: 1.9rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 h3 {
@@ -50,11 +54,16 @@ h4 {
 }
 
 ::selection {
-  background: red;
+  background: rgba(254, 62, 60, 0.4);
 }
 
 a {
   text-decoration: none;
+}
+
+.prompt {
+  color: rgba(47, 39, 34, 0.8);
+  font-style: italic;
 }
 
 .App {
@@ -70,27 +79,54 @@ a {
 }
 
 .error {
-  border: red solid 2px;
+  border: rgba(254, 62, 60, 0.4);
+
 }
 
 .suggestion {
   cursor: pointer;
 }
 
-input[type="text"] {
+input[type="text"], textarea {
   font-family: "Liberation Serif", serif;
   font-size: 1rem;
   border: none;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid rgba(47, 39, 34, 0.1);
   outline: none;
 }
 
-input[type="text"]:focus {
-  border-bottom: 2px solid red;
+textarea {
+  resize: none;
+  overflow: hidden;
+}
+
+.textarea, .textareaHidden {
+  width: 100%;
+  min-height: 2rem;
+  font-family: "Liberation Serif", serif;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 2px solid rgba(47, 39, 34, 0.1);
+  outline: none;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+}
+
+.textareaHidden {
+  display: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+input[type="text"]:focus, textarea:focus {
+  border-bottom: 2px solid rgba(254, 62, 60, 0.6);
 }
 
 button:focus {
-  border: solid red 2px;
+  border: 2px solid rgba(47, 39, 34, 1);
   outline: none;
 }
 
@@ -99,11 +135,17 @@ button:focus {
 nav {
   grid-column-start: 1;
   grid-column-end: 3;
-  border: red solid 2px;
+  border: none;
+  border-right: 2px solid rgba(47, 39, 34, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 nav > h1 {
   font-size: 1.6rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 nav > ul {
@@ -111,18 +153,7 @@ nav > ul {
   padding: 0;
 }
 
-nav > ul > li > a > p {
-  padding: 0;
-  margin: 0;
-}
-
-nav > ul > li > p {
-  padding: 0;
-  margin: 0;
-}
-
-nav > ul > li > ul > li > a > p {
-  padding: 0;
+nav p {
   margin: 0;
 }
 
@@ -142,22 +173,27 @@ nav > ul > li > ul {
 .Vocabulary, .Build, .Games, .HinkyPinky, .HangMan, .Fill, .Loading {
   grid-column-start: 4;
   grid-column-end: 12;
-  border: blue solid 2px;
+}
+
+.Score {
+  justify-self: flex-end;
 }
 
 /* Vocabulary ////////////////////////////////////////////////////////////////*/
 
 .VocabularyCard {
-  border: 2px solid black;
+  border: 2px solid rgba(47, 39, 34, 0.2);
   padding-left: 2rem;
   padding-right: 2rem;
   padding-top: 1.3rem;
   padding-bottom: 1.3rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
-.VocabularyCard input[type="text"] {
-  width: 100%;
-}
+/* .VocabularyCard ul {
+  list-style: none;
+} */
 
 /* Build /////////////////////////////////////////////////////////////////////*/
 

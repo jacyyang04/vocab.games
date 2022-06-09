@@ -35,6 +35,37 @@ function VocabularyCard({ id, vocabularyWord }) {
     
   }
 
+  let textareas = document.querySelectorAll(".textarea");
+  const hiddenTextarea = document.createElement("div");
+  hiddenTextarea.classList.add(".textarea");
+  let content = null;
+
+  for (let textarea of textareas) {
+    (function(textarea) {
+        // On input into a [textarea]...
+        textarea.addEventListener('input', function() {
+        console.log("test");
+        // Append [hiddenTextArea] div as a child to the [textarea],
+        textarea.parentNode.appendChild(hiddenTextarea);
+        textarea.style.resize = 'none';
+        // This removes scrollbars
+        textarea.style.overflow = 'hidden';
+        // Grab the content and clone over into hiddenTextarea.
+        content = textarea.value;
+        content = content.replace(/\n/g, '<br>');
+        hiddenTextarea.innerHTML = content + '<br style="line-height: 3px;">';
+        // Make [hiddenTextarea] hidden but [display: block] to read the height.
+        hiddenTextarea.style.visibility = 'hidden';
+        hiddenTextarea.style.display = 'block';
+        // Set [textarea]'s height to the same as the [hiddenTextarea].
+        textarea.style.height = hiddenTextarea.offsetHeight + 'px';
+        // Hide [hiddenTextarea].
+        hiddenTextarea.style.visibility = 'visible';
+        hiddenTextarea.style.display = 'none';
+      });
+    })(textarea);
+  }
+
   return (
     <div className="VocabularyCard" id={id}>
 
@@ -46,29 +77,35 @@ function VocabularyCard({ id, vocabularyWord }) {
       <p className="VocabularyCardDictionary">
       </p>
 
-      <h4>
-        Definitions
-      </h4>
-      <p className={defPromptClasses}>Write your own definitions.</p>
-      <ul>
-        <li><FontAwesomeIcon icon={solid('user-secret')} rotation={180} listItem={true} /><input onFocus={definitionFocused} type="text"></input></li>
-      </ul>
+      <section className="VocabularyCardDefinitions">
+        <h4>
+          Definitions
+        </h4>
+        <p className={defPromptClasses}>Write your own definitions.</p>
+        <ul>
+          <li><FontAwesomeIcon icon={solid('user-secret')} rotation={180} listItem /><textarea className="textarea" onFocus={definitionFocused}></textarea></li>
+        </ul>
+      </section>
 
-      <h4>
-        Quotes
-      </h4>
-      <p className={quoPromptClasses}>How would you use this word?</p>
-      <ul>
-        <li><input onFocus={quotesFocused} type="text"></input></li>
-      </ul>
+      <section className="VocabularyCardQuotes">
+        <h4>
+          Quotes
+        </h4>
+        <p className={quoPromptClasses}>How would you use this word?</p>
+        <ul>
+          <li><textarea className="textarea" onFocus={quotesFocused}></textarea></li>
+        </ul>
+      </section>
 
-      <h4>
-        Connections
-      </h4>
-      <p className={conPromptClasses}>Connections.</p>
-      <ul>
-        <li><input onFocus={connectionsFocused} type="text"></input></li>
-      </ul>
+      <section className="VocabularyCardConnections">
+        <h4>
+          Connections
+        </h4>
+        <p className={conPromptClasses}>Connections.</p>
+        <ul>
+          <li><textarea className="textarea" onFocus={connectionsFocused}></textarea></li>
+        </ul>
+      </section>
 
     </div>
   );

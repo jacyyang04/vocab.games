@@ -23,6 +23,8 @@ import './App.css';
 function App() {
 
   const [loading, setLoading] = useState(false);
+  const [vocabulary, setVocabulary] = useState([]);
+  const [score, setScore] = useState(0);
   const navigate = useNavigate();
 
   // setAppHotkeys /////////////////////////////////////////////////////////////
@@ -62,7 +64,7 @@ function App() {
     return (
       <div className="App">
         <Router>
-          <Nav />
+          <Nav score={score} />
           <Loading />
         </Router>
       </div>
@@ -71,15 +73,15 @@ function App() {
 
   return (
     <div className="App">
-        <Nav />
+        <Nav score={score} />
         <Routes>
           <Route 
             path="/" 
-            element={<Vocabulary />}
+            element={<Vocabulary vocabulary={vocabulary} setVocabulary={setVocabulary} score={score} setScore={setScore} />}
           />
           <Route 
             path="/build"
-            element={<Build />} 
+            element={<Build vocabulary={vocabulary} setVocabulary={setVocabulary} score={score} setScore={setScore} />} 
           />
           <Route 
             path="/games"
@@ -87,15 +89,15 @@ function App() {
           />
           <Route 
             path="/games/hinky-pinky"
-            element={<HinkyPinky />} 
+            element={<HinkyPinky vocabulary={vocabulary} setVocabulary={setVocabulary} score={score} setScore={setScore} />} 
           />
           <Route 
             path="/games/hang-man"
-            element={<HangMan />} 
+            element={<HangMan vocabulary={vocabulary} setVocabulary={setVocabulary} score={score} setScore={setScore} />} 
           />
           <Route 
             path="/games/fill"
-            element={<Fill />} 
+            element={<Fill vocabulary={vocabulary} setVocabulary={setVocabulary} score={score} setScore={setScore} />} 
           />
         </Routes>
     </div>

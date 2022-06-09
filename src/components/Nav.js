@@ -5,8 +5,9 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro';
+import Score from './Score';
 
-function Nav() {
+function Nav({score}) {
   return (
     <nav>
       <h1>
@@ -42,6 +43,7 @@ function Nav() {
           </ul>
         </li>
       </ul>
+      <Score score={score} />
     </nav>
   );
 }
