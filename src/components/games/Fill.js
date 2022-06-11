@@ -5,7 +5,7 @@
 import {Route, Routes}
   from "react-router-dom";
 
-function Fill() {
+function Fill(vocabulary, setVocabulary, score, setScore) {
   return (
     <div className="Fill">
       <h2>

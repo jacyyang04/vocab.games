@@ -15,32 +15,28 @@ function Nav({score}) {
       </h1>
       <ul>
         <li>
-          <Link to="/"><FontAwesomeIcon icon={solid("book")} /> Vocabulary</Link>
-          <ul>
-            <li>
-              <Link to="/build"><p>Build</p></Link>
-            </li>
-            <li>
-              <p>Download</p>
-            </li>
-            <li>
-              <p>Upload</p>
-            </li>
-          </ul>
+          <Link to="/"><p><FontAwesomeIcon icon={solid("book")} fixedWidth /> Vocabulary</p></Link>
         </li>
         <li>
-          <Link to="/games"><FontAwesomeIcon icon={solid("shapes")} /> Games</Link>
-          <ul>
-            <li>
-              <Link to="/games/hinky-pinky"><p>Hinky Pinky</p></Link>
-            </li>
-            <li>
-              <Link to="/games/hang-man"><p>Hang Man</p></Link>
-            </li>
-            <li>
-              <Link to="/games/fill"><p>Fill</p></Link>
-            </li>
-          </ul>
+          <Link to="/build"><p>Build</p></Link>
+        </li>
+        <li>
+          <p>Download</p>
+        </li>
+        <li>
+          <p>Upload</p>
+        </li>
+        <li>
+          <Link to="/games"><p><FontAwesomeIcon icon={solid("shapes")} fixedWidth /> Games</p></Link>
+        </li>
+        <li>
+          <Link to="/games/hinky-pinky"><p>Hinky Pinky</p></Link>
+        </li>
+        <li>
+          <Link to="/games/hang-man"><p>Hang Man</p></Link>
+        </li>
+        <li>
+          <Link to="/games/fill"><p>Fill</p></Link>
         </li>
       </ul>
       <Score score={score} />

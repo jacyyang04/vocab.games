@@ -4,13 +4,16 @@
 
 import VocabularyCard from "./VocabularyCard";
 
-function VocabularyCardList({ vocabularyData }) {
+function VocabularyCardList({ sessionVocabularyData }) {
 
-  const vocabularyCardList = vocabularyData.map((vocabularyWord) => {
+  let i = -1;
+  const vocabularyCardList = sessionVocabularyData.map((sessionVocabularyWordData) => {
+    i++;
+    const vocabularyCardKey = `VocabularyCard-${i}-${sessionVocabularyWordData.headword}`
     return <VocabularyCard 
-      key={vocabularyWord.headword}
-      id={vocabularyWord.headword}
-      vocabularyWord={vocabularyWord}
+      key={vocabularyCardKey}
+      id={vocabularyCardKey}
+      vocabularyWordMWData={sessionVocabularyWordData}
     />
   })
 

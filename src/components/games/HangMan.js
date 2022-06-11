@@ -5,7 +5,7 @@
 import {Route, Routes}
   from "react-router-dom";
 
-function HangMan() {
+function HangMan(vocabulary, setVocabulary, score, setScore) {
   return (
     <div className="HangMan">
       <h2>

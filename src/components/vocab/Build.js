@@ -11,7 +11,7 @@ import VocabularyCardList from "./VocabularyCardList";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- i
 
-function Build() {
+function Build(vocabulary, setVocabulary, score, setScore) {
 
   // Messages:
   const msgEmpty = "Search for a word.";
@@ -19,8 +19,8 @@ function Build() {
   const msgSuggestions = "Word not found. Did you mean any of these words?"
 
   // CSS classes:
-  const clsSearchbarValid = "";
-  const clsSearchbarError = "error";
+  const clsSearchbarValid = "searchbar";
+  const clsSearchbarError = "searchbar error";
   const clsSearchbarMessageHidden = "searchbar-message hidden";
   const clsSearchbarMessageShown = "searchbar-message";
   const clsSuggestionsHidden = "suggestions hidden";
@@ -41,38 +41,6 @@ function Build() {
   }, {
     filterPreventDefault: true
   });
-
-  let textareas = document.querySelectorAll(".textarea");
-  const hiddenTextarea = document.createElement("div");
-  let content = null;
-
-  // Apply common [.textarea] styling to [hiddenTextArea].
-  hiddenTextarea.classList.add(".textarea");
-
-  for(let textarea of textareas) {
-    (function(textarea) {
-      // On input into a [textarea]...
-      textarea.addEventListener('input', function() {
-        // Append [.hiddenTextArea] div as a child to the [textarea],
-        textarea.parentNode.appendChild(hiddenTextarea);
-        textarea.style.resize = 'none';
-        // This removes scrollbars
-        textarea.style.overflow = 'hidden';
-        // Grab the content and clone over into hiddenTextarea.
-        content = textarea.value;
-        content = content.replace(/\n/g, '<br>');
-        hiddenTextarea.innerHTML = content + '<br style="line-height: 3px;">';
-        // Make [hiddenTextarea] hidden but [display: block] to read the height.
-        hiddenTextarea.style.visibility = 'hidden';
-        hiddenTextarea.style.display = 'block';
-        // Set [textarea]'s height to the same as the [hiddenTextarea].
-        textarea.style.height = hiddenTextarea.offsetHeight + 'px';
-        // Hide [hiddenTextarea].
-        hiddenTextarea.style.visibility = 'visible';
-        hiddenTextarea.style.display = 'none';
-      });
-    })(textarea);
-  }
 
   // wordSearch ////////////////////////////////////////////////////////////////
   const wordSearch = async (event) => {
@@ -133,24 +101,35 @@ function Build() {
       <h2>
         Build
       </h2>
-      <form className="VocabularySearchBar" onSubmit={wordSearch}>
+      <form 
+        className="VocabularySearchBar searchbarForm"
+        onSubmit={wordSearch}
+      >
         <input 
           id="searchbar" 
           className={searchbarClasses} 
           type="text"
-          placeholder="Search for a word.">
+          placeholder="Search for a word."
+        >
         </input>
-        <button type="submit"><FontAwesomeIcon icon={solid('magnifying-glass')} /></button>
+        <button type="submit">
+          <FontAwesomeIcon 
+            icon={solid('magnifying-glass')} 
+            fixedWidth
+          />
+        </button>
       </form>
       <div className={searchbarMessageClasses}>
-        <p>{searchbarMessage}</p> 
+        <p>
+          {searchbarMessage}
+        </p> 
       </div>
       <div className={suggestionsClasses}>
         <ul>
           {suggestions}
         </ul>
       </div>
-      <VocabularyCardList vocabularyData={sessionVocabularyData} />
+      <VocabularyCardList sessionVocabularyData={sessionVocabularyData} />
     </div>
   );
 }

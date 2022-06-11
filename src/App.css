@@ -142,32 +142,39 @@ nav {
   justify-content: flex-start;
 }
 
+nav a {
+  color: rgba(47, 39, 34, 0.8);
+}
+
+nav > ul > li {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+
 nav > h1 {
   font-size: 1.6rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin: 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-bottom: 2px solid rgba(47, 39, 34, 0.2);
 }
 
 nav > ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 nav p {
   margin: 0;
 }
 
-nav > ul > li:hover {
-  background-color: red;
-}
-
-nav > ul > li > ul > li:hover {
-  background-color: yellow;
-}
-
-nav > ul > li > ul {
-  list-style: none;
-  padding: 0;
+nav > ul > li:hover, nav > ul > a::selection {
+  background-color: rgba(47, 39, 34, 0.2);
 }
 
 .Vocabulary, .Build, .Games, .HinkyPinky, .HangMan, .Fill, .Loading {
@@ -177,6 +184,33 @@ nav > ul > li > ul {
 
 .Score {
   justify-self: flex-end;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+
+.searchbar {
+  width: 100%;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.searchbarForm > button {
+  border-radius: 50%;
+  border: none;
+  padding: 0.3rem;
+  cursor: pointer;
+  background-color: rgba(47, 39, 34, 0.2);
+}
+
+.searchbarForm {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  align-content: center;
 }
 
 /* Vocabulary ////////////////////////////////////////////////////////////////*/
@@ -189,6 +223,16 @@ nav > ul > li > ul {
   padding-bottom: 1.3rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.VocabularyCard > h3:hover .delete-card {
+  color: rgba(47, 39, 34, 1);
+}
+
+.delete-card {
+  float: right;
+  color: rgba(47, 39, 34, 0.2);
+  cursor: pointer;
 }
 
 /* .VocabularyCard ul {

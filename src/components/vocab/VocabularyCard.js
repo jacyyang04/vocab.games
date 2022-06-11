@@ -6,7 +6,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro';
 
-function VocabularyCard({ id, vocabularyWord }) {
+function VocabularyCard({ id, vocabularyWordMWData }) {
 
   const clsPromptHidden = "prompt hidden";
   const clsPromptShown = "prompt";
@@ -70,7 +70,7 @@ function VocabularyCard({ id, vocabularyWord }) {
     <div className="VocabularyCard" id={id}>
 
       <h3>
-        <FontAwesomeIcon icon={solid('user-secret')} rotation={180} />{vocabularyWord.headword}
+        {vocabularyWordMWData.headword} <span className="delete-card"><FontAwesomeIcon icon={solid('x')} /></span>
       </h3>
 
 
@@ -83,7 +83,7 @@ function VocabularyCard({ id, vocabularyWord }) {
         </h4>
         <p className={defPromptClasses}>Write your own definitions.</p>
         <ul>
-          <li><FontAwesomeIcon icon={solid('user-secret')} rotation={180} listItem /><textarea className="textarea" onFocus={definitionFocused}></textarea></li>
+          <li><textarea className="textarea" onFocus={definitionFocused}></textarea></li>
         </ul>
       </section>
 

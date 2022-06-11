@@ -5,7 +5,7 @@
 import {Route, Routes}
   from "react-router-dom";
 
-function Vocabulary() {
+function Vocabulary(vocabulary, setVocabulary, score, setScore) {
   return (
     <div className="Vocabulary">
       <h2>
