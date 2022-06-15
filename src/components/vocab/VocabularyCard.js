@@ -5,8 +5,11 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro';
+import VocabularyCardExampleDefinition from "./VocabularyCardExampleDefinition";
+import { wordDataNotFound } from "../../libraries/mwLibrary";
+import VocabularyCardExampleDefinitionList from "./VocabularyCardExampleDefinitionList";
 
-function VocabularyCard({ id, vocabularyWordMWData }) {
+function VocabularyCard({ id, vocabularyWord }) {
 
   const clsPromptHidden = "prompt hidden";
   const clsPromptShown = "prompt";
@@ -31,10 +34,6 @@ function VocabularyCard({ id, vocabularyWordMWData }) {
     setQuoPromptClasses(clsPromptHidden);
   }
 
-  const dictionaryDefinitions = () => {
-    
-  }
-
   let textareas = document.querySelectorAll(".textarea");
   const hiddenTextarea = document.createElement("div");
   hiddenTextarea.classList.add(".textarea");
@@ -44,7 +43,6 @@ function VocabularyCard({ id, vocabularyWordMWData }) {
     (function(textarea) {
         // On input into a [textarea]...
         textarea.addEventListener('input', function() {
-        console.log("test");
         // Append [hiddenTextArea] div as a child to the [textarea],
         textarea.parentNode.appendChild(hiddenTextarea);
         textarea.style.resize = 'none';
@@ -70,12 +68,14 @@ function VocabularyCard({ id, vocabularyWordMWData }) {
     <div className="VocabularyCard" id={id}>
 
       <h3>
-        {vocabularyWordMWData.headword} <span className="delete-card"><FontAwesomeIcon icon={solid('x')} /></span>
+        {vocabularyWord.headword} <span className="delete-card"><FontAwesomeIcon icon={solid('x')} /></span>
       </h3>
 
-
-      <p className="VocabularyCardDictionary">
-      </p>
+      <section className="VocabularyCardDictionary">
+        <VocabularyCardExampleDefinitionList
+          vocabularyWord={vocabularyWord}
+        />
+      </section>
 
       <section className="VocabularyCardDefinitions">
         <h4>
@@ -101,7 +101,7 @@ function VocabularyCard({ id, vocabularyWordMWData }) {
         <h4>
           Connections
         </h4>
-        <p className={conPromptClasses}>Connections.</p>
+        <p className={conPromptClasses}>Make some kind of connections about this word.</p>
         <ul>
           <li><textarea className="textarea" onFocus={connectionsFocused}></textarea></li>
         </ul>

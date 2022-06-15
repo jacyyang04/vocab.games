@@ -3,6 +3,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 import VocabularyCard from "./VocabularyCard";
+import {VocabularyWord} from "../../classes/vocabularyClasses";
 
 function VocabularyCardList({ sessionVocabularyData }) {
 
@@ -13,7 +14,7 @@ function VocabularyCardList({ sessionVocabularyData }) {
     return <VocabularyCard 
       key={vocabularyCardKey}
       id={vocabularyCardKey}
-      vocabularyWordMWData={sessionVocabularyWordData}
+      vocabularyWord={sessionVocabularyWordData}
     />
   })
 

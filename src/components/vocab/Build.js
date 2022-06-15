@@ -3,10 +3,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 import { useState } from "react";
-import { getMWWordData, wordDataNotFound } from "../../mwLibrary";
+import { getMWWordData, wordDataNotFound } from "../../libraries/mwLibrary";
 import hotkeys from "hotkeys-js";
 import { useHotkeys } from "react-hotkeys-hook";
 import VocabularyCardList from "./VocabularyCardList";
+import { MWSuggestions, VocabularyWord } from "../../classes/vocabularyClasses";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- i
@@ -51,7 +52,7 @@ function Build(vocabulary, setVocabulary, score, setScore) {
     if (!searchbarEmpty) {
       const wordData = await getMWWordData(wordSearched);
       // Show suggestions if suggestions are returned,
-      if (wordData.isSuggestions) {
+      if (wordData instanceof MWSuggestions) {
         searchSuggestions(wordData.suggestions);
       // Show error message if [wordData] is not found,
       } else if (wordDataNotFound(wordData)) {
@@ -80,11 +81,12 @@ function Build(vocabulary, setVocabulary, score, setScore) {
   // searchValid ///////////////////////////////////////////////////////////////
   // 
   const searchValid = (wordData) => {
-    setSessionVocabularyData([...sessionVocabularyData, wordData]);
-    console.log(sessionVocabularyData);
+    const newVocabularyWord = new VocabularyWord(wordData.headword, wordData);
+    setSessionVocabularyData([...sessionVocabularyData, newVocabularyWord]);
     setSearchbarClasses(clsSearchbarValid);
     setSearchbarMessageClasses(clsSearchbarMessageHidden);
     setSuggestionsClasses(clsSuggestionsHidden);
+    // console.log(sessionVocabularyData);
   }
 
   // searchError ///////////////////////////////////////////////////////////////

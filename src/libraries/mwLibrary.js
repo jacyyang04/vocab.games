@@ -4,55 +4,37 @@
 // Library for receiving and formatting/standardizing [WordData] from 
 // Merriam-Webster/dictionaryapi.com.
 
-function WordData(headword, words, isSuggestions) {
-  this.headword = headword;
-  this.words = words;
-  this.isSuggestions = isSuggestions;
-}
-
-function WordSuggestions(suggestions, isSuggestions) {
-  this.suggestions = suggestions;
-  this.isSuggestions = isSuggestions;
-}
-
-function Word(word, type, definitions, pronunciations) {
-  this.word = word;
-  this.type = type;
-  this.definitions = definitions;
-  this.pronunciations = pronunciations;
-}
-
-function Pronunciation(mwNotation, mwAudioURL) {
-  this.mwNotation = mwNotation;
-  this.mwAudioURL = mwAudioURL;
-}
+import { MWVocabularyWord, MWWord, MWPronunciation, MWSuggestions } from "../classes/vocabularyClasses";
 
 // getMWWordData ///////////////////////////////////////////////////////////////
-// Returns formatted [WordData] from dictionaryapi.com if [wordQuery] yields
-// an exact result.
-// Returns [WordSuggestions] with alternative queries if [wordQuery] yields
+// Returns formatted [MWVocabularyWord] from dictionaryapi.com if [wordQuery]
+// yields an exact result.
+// Returns [MWSuggestions] with alternative queries if [wordQuery] yields
 // inexact results.
 const getMWWordData = async (wordQuery) => {
   let mwWordArray = await fetchMWWordArray(wordQuery);
+  // If MW returned [mwWordArray] of suggestions, return a [MWSuggestions] with
+  // suggestions.
   if (mwWordArrayIsSuggestions(mwWordArray)) {
-    return new WordSuggestions(mwWordArray, true);
+    return new MWSuggestions(mwWordArray);
+  // If MW returned [mwWordArray] of words, 
   } else {
-    return new WordData(wordQuery, formatMWWordArray(mwWordArray), false);
+    return new MWVocabularyWord(wordQuery, formatMWWordArray(mwWordArray));
   }
 }
 
 // wordDataNotFound ////////////////////////////////////////////////////////////
-// Returns [true] if the given [wordData] [WordData] obj. has 0 words.
+// Returns [true] if the given [MWVocabularyWord] [mwVocabularyWord] has 0 
+// words.
 // Returns [false] otherwise.
-const wordDataNotFound = (wordData) => {
-  return wordData.words.length === 0;
+const wordDataNotFound = (mwVocabularyWord) => {
+  return mwVocabularyWord.words.length === 0;
 }
 
 // fetchMWWordArray ////////////////////////////////////////////////////////////
 // Fetches a [mwWordArray] of objects containing word data from 
 // dictionaryapi.com, given a [wordQuery] string.
 const fetchMWWordArray = (wordQuery) => {
-  console.log(`Fetching "${wordQuery}."`);
   const mwWordArray = fetch(`https://dictionaryapi.com/api/v3/references/collegiate/json/${wordQuery}?key=${process.env.REACT_APP_DICTIONARY_KEY}`)
   .catch(() => {
     throw Error(`Cannot fetch "${wordQuery}." Ensure REACT_APP_DICTIONARY_KEY is present.`);
@@ -82,12 +64,13 @@ const formatMWWordArray = (mwWordArray) => {
 }
 
 // removeMWMetadata ////////////////////////////////////////////////////////////
+// Filters out excess MW metadata (data that doesn't have a "hom" property).
 const removeMWMetadata = (mwWordArray) => {
   return mwWordArray.filter(i => i.hasOwnProperty("hom"));
 }
 
 // formatMWWord ////////////////////////////////////////////////////////////////
-// Returns a newly formatted [Word], given a [mwWord] obj. in Merriam-Webster
+// Returns a newly formatted [MWWord], given a [mwWord] obj. in Merriam-Webster
 // format.
 const formatMWWord = (mwWord) => {
   const word = mwWord.hwi.hw;
@@ -97,23 +80,22 @@ const formatMWWord = (mwWord) => {
   if (mwWord.hwi.hasOwnProperty("prs")) {
     pronunciations = formatMWPronunciations(mwWord.hwi.prs);
   }
-  return new Word(word, type, definitions, pronunciations);
+  return new MWWord(word, type, definitions, pronunciations);
 }
 
-// formatPronunciations ////////////////////////////////////////////////////////
+// formatMWPronunciations //////////////////////////////////////////////////////
 // Given a valid array of [pronunciations], returns a [formattedPronunciations]
 // array.
 const formatMWPronunciations = (pronunciations) => {
-  const formattedPronunciations = pronunciations.map(pronunciation => {
+  const mwPronunciations = pronunciations.map(pronunciation => {
     const mwNotation = pronunciation.mw;
-    let formattedPronunciation = new Pronunciation(mwNotation);
+    let mwPronunciation = new MWPronunciation(mwNotation);
     if (pronunciation.hasOwnProperty("sound")) {
-      formattedPronunciation.mwAudioURL = 
-        getMWAudioURL(pronunciation.sound.audio);
+      mwPronunciation.addMWAudioURL(pronunciation.sound.audio);
     }
-    return formattedPronunciation;
+    return mwPronunciation;
   });
-  return formattedPronunciations;
+  return mwPronunciations;
 }
 
 // getMWAudioURL ///////////////////////////////////////////////////////////////
