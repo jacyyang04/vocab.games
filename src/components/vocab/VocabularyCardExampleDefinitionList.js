@@ -3,23 +3,27 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 import VocabularyCardExampleDefinition from "./VocabularyCardExampleDefinition";
-import { useState } from "react";
-import { VocabularyWord } from "../../classes/vocabularyClasses";
+import { useState, useEffect } from "react";
 
 function VocabularyCardExampleDefinitionList(vocabularyWord) {
 
   const [exampleDefinitions, setExampleDefinitions] = useState([]);
 
-  console.log(vocabularyWord.vocabularyWord.getMWData());
-  // vocabularyWord.getMWData();
+  useEffect(() => {
+    let i = -1;
+    console.log(vocabularyWord.vocabularyWord.getMWData());
+    const definitions = vocabularyWord.vocabularyWord.getMWData().words.map((word) => {
+      i++;
+      const key = `VocabularyCardExampleDefinition-${i}`;
+      return <VocabularyCardExampleDefinition key={key} type={word.type} definitions={word.definitions} />
+    })
+    setExampleDefinitions(definitions);
+  }, []);
 
-  // const definitions = vocabularyWord.getMWData().definitions.map((word) => {
-  //   return <VocabularyCardExampleDefinition type={word.type} definitions={word.definitions} />
-  // })
-  // setExampleDefinitions(definitions);
+
   return (
     <div className="VocabularyCardExampleDefinitionList">
-      {/* {exampleDefinitions} */}
+      {exampleDefinitions}
     </div>
   );
 }

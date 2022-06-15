@@ -3,7 +3,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 import VocabularyCard from "./VocabularyCard";
-import {VocabularyWord} from "../../classes/vocabularyClasses";
 
 function VocabularyCardList({ sessionVocabularyData }) {
 

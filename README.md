@@ -38,66 +38,12 @@ Play **Hang Man** to develop your deductive reasoning and learn new words to add
 * [Merriam-Webster's Collegiate® Dictionary with Audio](https://dictionaryapi.com/products/api-collegiate-dictionary)
 * [Merriam-Webster's Collegiate® Thesaurus](https://dictionaryapi.com/products/api-collegiate-thesaurus)
 
-## Tasks
+## What's Complete
 
-### MVP (Wk. 1-2)
+The *Build* page can be searched for words valid to the Merriam-Webster dictionary, and will suggest alternative words if no word is found but adjacent-enough words are.
 
-- [x] Basic navigation & nav.
-- [x] Basic columnar layout.
-- [x] Basic loading screen.
-- [ ] *Build* focuses searchbar when `/` is pressed.
-- [ ] *Build* deletes a focused data field when `CTRL+D` is pressed.
-- [ ] *Build* displays words with definitions & IPA notation.
-- [ ] *Build* displays words with pronunciation audio.
-- [ ] *Build* displays prompts when inputting word data.
-- [ ] *Build* accepts and stores word data.
-- [ ] *Build* allows removing word data.
-- [ ] *Build* allows searching for specific words.
-- [ ] *Build* allows random word selection.
-- [ ] *Build* finds synonyms and related words automatically. 
-- [ ] *Vocabulary* displays words & word data from *Build.*
-- [ ] *Vocabulary* allows editing word data.
-- [ ] *Score* increments.
-- [ ] *Build* displays a new word when `RETURN` is pressed.
-- [ ] *Build* opens a new word data field in the same data category when `TAB` is pressed.
-- [ ] *Build* opens a new word data field in the next data category when `Q` is pressed.
-- [ ] *Build* bolds lexemes.
-- [ ] *Build* CSS.
-- [ ] *Vocabulary* CSS.
-- [x] *Build* accessed when `B` is pressed.
-- [x] *Vocabulary* accessed when `V` is pressed.
+Hotkeys work.
 
-### Download (Wk. 3)
+`console.log` reports data having to do with searched words in the `sessionVocabulary`.
 
-- [ ] *Download* serves JSON file of user's vocabulary.
-- [ ] Data persists somehow.
-
-### Game: Hinky Pinky (Wk. 3)
-
-- [x] *Hinky Pinky* accessed when `H` is pressed.
-- [ ] *Hinky Pinky* displays valid challenge phrases.
-- [ ] *Hinky Pinky* checks response when `RETURN` is pressed.
-- [ ] *Hinky Pinky* accepts valid responses.
-- [ ] *Hinky Pinky* increments *Score.*
-- [ ] *Hinky Pinky* CSS.
-
-### Game: Fill (Bonus)
-
-- [x] *Fill* accessed when `F` is pressed.
-- [ ] ...
-
-### Game: Hang Man (Bonus)
-
-- [x] *Hang Man* accessed when `G` is pressed.
-- [ ] ...
-
-### Upload (Bonus)
-
-- [ ] *Upload* accepts valid JSON.
-- [ ] *Upload* rejects invalid JSON.
-- [ ] *Upload* adds to user's vocabulary.
-
-## Future Features
-
-* "Morphology" section added to words, if I can find an API that breaks morphemes.
-* *Settings,* with features like dark-mode and toggling tooltips/hints.
+At the moment no dictionary definitions display, and users cannot add their own vocabulary data (definitions, quotes, connections) yet.

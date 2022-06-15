@@ -4,13 +4,12 @@
 
 import { useState } from "react";
 import { getMWWordData, wordDataNotFound } from "../../libraries/mwLibrary";
-import hotkeys from "hotkeys-js";
 import { useHotkeys } from "react-hotkeys-hook";
 import VocabularyCardList from "./VocabularyCardList";
 import { MWSuggestions, VocabularyWord } from "../../classes/vocabularyClasses";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- i
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- i
 
 function Build(vocabulary, setVocabulary, score, setScore) {
 
