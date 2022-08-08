@@ -8,14 +8,7 @@ import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import hotkeys from 'hotkeys-js';
 // Components:
-import Nav from './components/Nav';
-import Loading from './components/Loading';
-import Vocabulary from './components/vocab/Vocabulary';
-import Build from './components/vocab/Build';
-import Games from './components/games/Games';
-import HinkyPinky from './components/games/HinkyPinky';
-import HangMan from './components/games/HangMan';
-import Fill from './components/games/Fill';
+
 // Style:
 import './App.css';
 
@@ -32,10 +25,6 @@ function App() {
     hotkeys('v', function(event, handler) {
       event.preventDefault(); 
       navigate('/');
-    });
-    hotkeys('b', function(event, handler) {
-      event.preventDefault(); 
-      navigate('/build');
     });
     hotkeys('shift+g', function(event, handler) {
       event.preventDefault();
@@ -77,10 +66,6 @@ function App() {
           <Route 
             path="/" 
             element={<Vocabulary vocabulary={vocabulary} setVocabulary={setVocabulary} score={score} setScore={setScore} />}
-          />
-          <Route 
-            path="/build"
-            element={<Build vocabulary={vocabulary} setVocabulary={setVocabulary} score={score} setScore={setScore} />} 
           />
           <Route 
             path="/games"
