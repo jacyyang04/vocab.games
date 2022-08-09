@@ -6,6 +6,12 @@ Inform, reason, and persuade with precision and clarity by expanding your vocabu
 
 `vocab.games` is a suite of games and tools built from vocabulary-building best-practices.
 
+## Installation
+- `git clone` the repo
+- `npm install` to install the dependencies
+- Get a API key from https://dictionaryapi.com/ and select the Collegiate Dictionary as the API Request
+- Store your API key in an .env file with variable name: `REACT_APP_DICTIONARY_KEY`
+
 ## Vocabulary
 
 **Build** your vocabulary in chunks of algorithmically generated, semi-related words, or choose specific words of personal interest (if you're a rebel like that).
