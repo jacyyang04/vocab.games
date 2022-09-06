@@ -7,7 +7,10 @@
 import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import hotkeys from 'hotkeys-js';
+
 // Components:
+import Nav from './components/Nav';
+import Loading from './components/Loading';
 
 // Style:
 import './App.css';
@@ -63,7 +66,7 @@ function App() {
     <div className="App">
         <Nav score={score} />
         <Routes>
-          <Route 
+          {/* <Route 
             path="/" 
             element={<Vocabulary vocabulary={vocabulary} setVocabulary={setVocabulary} score={score} setScore={setScore} />}
           />
@@ -82,7 +85,7 @@ function App() {
           <Route 
             path="/games/fill"
             element={<Fill vocabulary={vocabulary} setVocabulary={setVocabulary} score={score} setScore={setScore} />} 
-          />
+          /> */}
         </Routes>
     </div>
   );
