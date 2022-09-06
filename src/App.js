@@ -10,6 +10,7 @@ import hotkeys from 'hotkeys-js';
 
 // Components:
 import Nav from './components/Nav';
+import Loading from './components/Loading';
 
 // Style:
 import './App.css';
@@ -55,7 +56,7 @@ function App() {
       <div className="App">
         <Router>
           <Nav score={score} />
-          {/* <Loading /> */}
+          <Loading />
         </Router>
       </div>
     )
@@ -64,8 +65,8 @@ function App() {
   return (
     <div className="App">
         <Nav score={score} />
-        {/* <Routes>
-          <Route 
+        <Routes>
+          {/* <Route 
             path="/" 
             element={<Vocabulary vocabulary={vocabulary} setVocabulary={setVocabulary} score={score} setScore={setScore} />}
           />
@@ -84,8 +85,8 @@ function App() {
           <Route 
             path="/games/fill"
             element={<Fill vocabulary={vocabulary} setVocabulary={setVocabulary} score={score} setScore={setScore} />} 
-          />
-        </Routes> */}
+          /> */}
+        </Routes>
     </div>
   );
 }
